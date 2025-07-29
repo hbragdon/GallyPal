@@ -19,9 +19,11 @@ app.post("/ask", async (req, res) => {
   const { question } = req.body;
 
   try {
-    const completion = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: question }],
+const completion = await openai.chat.completions.create({
+  model: "gpt-3.5-turbo",
+  messages: [{ role: "user", content: question }],
+});
+
     });
 
     const answer = completion.data.choices[0].message.content;
