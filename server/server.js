@@ -24,9 +24,8 @@ const completion = await openai.chat.completions.create({
   messages: [{ role: "user", content: question }],
 });
 
-    });
 
-    const answer = completion.data.choices[0].message.content;
+    const answer = completion.choices[0].message.content;
     res.json({ answer });
   } catch (error) {
     console.error("Error:", error.response?.data || error.message);
